@@ -3,24 +3,51 @@
      <span  class="sop" >商户结算信息详情</span>
       <el-form  v-model="fromdata">
         <div class="shop">
-           <p>
-             <span>部门ID</span>   <el-input  v-model="fromdata.open_bank"></el-input>
-             <span>姓名</span>   <el-input v-model="fromdata.name"></el-input>
-             <span>银行卡</span>   <el-input v-model="fromdata.bankcard_number" ></el-input>
-           </p>
-        <p>
-          <span>手机号</span>   <el-input v-model="fromdata.reserved_phone"></el-input>
-          <span>卡类型</span>   <el-input  v-model="fromdata.bank_type"></el-input>
-          <span>身份证</span>   <el-input v-model="fromdata.identity_card"></el-input>
-        </p>
-        <p>
-          <span>开户支行</span>   <el-input v-model="fromdata.sub_bank" ></el-input>
-          <span>提现类型</span>   <el-input v-model="fromdata.charge_type"></el-input>
-          <span>提现费率</span>   <el-input  v-model="fromdata.charge_rate"></el-input>
-        </p>
-          <el-button type="success" style="margin-left: 40%" @click="modify">修改信息</el-button>
-        </div>
 
+          <table border="1" class="table">
+            <tr>
+              <th class="th"  style="background-color:#fff">姓名</th>
+              <td  class="td"  ><el-input v-model="fromdata.name"></el-input></td>
+            </tr>
+            <tr>
+              <th class="th">身份证</th>
+              <td>  <el-input v-model="fromdata.identity_card" ></el-input></td>
+            </tr>
+            <tr>
+              <th class="th">银行卡</th>
+              <td>  <el-input v-model="fromdata.bankcard_number" ></el-input></td>
+            </tr>
+
+            <tr>
+              <th class="th"> <span>手机号</span>  </th>
+              <td>   <el-input v-model="fromdata.reserved_phone"></el-input></td>
+            </tr>
+            <tr>
+              <th class="th">   <span>银行卡类型</span> </th>
+              <td>   <el-input  v-model="fromdata.bank_type"></el-input></td>
+            </tr>
+            <tr>
+              <th  class="th">  <span>开户行</span></th>
+              <td  >     <el-input v-model="fromdata.open_bank" ></el-input></td>
+            </tr>
+            <tr>
+              <th  class="th">  <span>开户支行</span></th>
+              <td  >     <el-input v-model="fromdata.sub_bank" ></el-input></td>
+            </tr>
+            <tr>
+             <th  class="th">个人信息的修改</th>
+              <td> <el-button type="success" style="margin-left: 40%" @click="modify">确认修改</el-button></td>
+            </tr>
+            <tr>
+              <th  class="th">    <span>提现类型</span> </th>
+              <td >   <el-input  :disabled="true" v-model="fromdata.charge_type"></el-input></td>
+            </tr>
+            <tr>
+              <th class="th" >    <span>提现费率</span> </th>
+              <td  >  <el-input   :disabled="true" v-model="fromdata.charge_rate"></el-input></td>
+            </tr>
+          </table>
+        </div>
       </el-form>
 
     </div>
@@ -28,7 +55,7 @@
 
 
 <script>
-  import {shops ,  revise} from '../../api/api.js'
+  import {shops , revise} from '../../api/api.js'
     export default {
         name: "sett",
       data(){
@@ -36,15 +63,15 @@
           id:'',
           fromdata:{
             user_id:'',
-            name:'',
-            identity_card:'',
-            bankcard_number:'',
-            reserved_phone:'',
-            bank_type:'',
-            open_bank:'',
-            sub_bank:'',
-            charge_type:'',
-            charge_rate:'',
+            name:'',//姓名
+            identity_card:'',//身份证
+            bankcard_number:'',//银行卡
+            reserved_phone:'',// 预留电话
+            bank_type:'',//银行卡类型
+            open_bank:'',//开户行
+            sub_bank:'',//开户支行
+            charge_type:'',//: 提现类型：1-单次定额；2-单次百分比 ,
+            charge_rate:'',//提现费率：charge_type = 1，单位为分；charge_type = 2；单位为 万分之n；
           }
         }
 
@@ -56,13 +83,14 @@
       },
       methods:{
         init(){
-          let id = this.id
+          let id = this.id;
           shops({
-           user_id: id
-
+          params: {
+            user_id: id
           }
+            }
         ).then(res=>{
-            console.log(res)
+            console.log(res);
             this.fromdata = res
           })
         },
@@ -92,16 +120,33 @@
 </script>
 
 <style scoped>
+
  .el-input{
-  width: 150px;
+  width: 100%;
 }
   .shop{
     margin-left: 10%;
     width: 70%;
+    margin-top: 30px;
+    margin-bottom: 50px;
     /*border: 1px red solid;*/
   }
+  .table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+  }
+  .th{
+    width: 300px;
+    background-color: #fff;
+    line-height: 20px;
+  }
+  .td{
+    width: 300px;
+    background-color: #fff;
+  }
 .set{
-  height: 350px;
+  height: 100%;
   background-color: whitesmoke;
 }
   .sop{
@@ -110,8 +155,5 @@
     margin-left: 30%;
     margin-top: 10px;
   }
-  .shop{
 
-    margin-top: 30px;
-  }
 </style>

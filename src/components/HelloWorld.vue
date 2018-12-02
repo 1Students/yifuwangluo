@@ -2,8 +2,8 @@
   <div class="hellosc">
       <img src="../assets/bg.png" alt="" class="bg" width="100%">
       <div class="logos">
-         <img src="../assets/bglogo.png" alt="" class="er">
-          <p class="logo">后台登录</p>
+         <!--<img src="../assets/bglogo.png" alt="" class="er">-->
+          <!--<p class="logo">后台登录</p>-->
         <div class="zhanghu">
         <el-row >
               <el-col :span="25" style="padding-left:14%;padding-top:40px;padding-ringht:30px" >
@@ -21,8 +21,8 @@
             </el-row>
             <el-row>
               <el-col :span="20" style="padding-left:15%;  padding-bottom:30px;">
-                <el-button id="login" v-on:click="check" @keydown.enter="check" style="width:100%" type="primary">登录</el-button>
-                <el-button  class="log"  v-on:click="check"  style="width:100%" type="primary">注册</el-button>
+                <el-button id="login" v-on:click="ck" @keydown.enter="check" style="width:45%;color: #3a8ee6" >注册</el-button>
+                <el-button  class="log"  v-on:click="check"  style="width:45%;"  type="primary" >登录</el-button>
               </el-col>
           </el-row>
       </div>
@@ -53,6 +53,9 @@ export default {
     }
   },
     methods: {
+    ck(){
+      this.$router.push({path:'/deal'})
+    },
       check : function(event){
 				//获取值
 				let name = this.name;
@@ -121,13 +124,14 @@ export default {
 .zhanghu{
    position: fixed;
   left: 40%;
-  top: 380px;
+  top: 250px;
   background-color: white;
   width: 366px;
 }
 .log{
   margin-top: 20px;
-  margin-left:0 ;
+
+  margin-left:8%;
 }
 .el-row {
     margin-bottom: 20px;

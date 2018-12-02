@@ -29,6 +29,10 @@ export default new Router({
           component: () => import('@/components/Settlement/sett.vue'),
         },
         {
+          path: '/money',
+          component: () => import('@/components/Settlement/money.vue'),
+        },
+        {
           path: '/setts',
           component: () => import('@/components/Settlement/setts.vue'),
         }

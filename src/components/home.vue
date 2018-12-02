@@ -6,7 +6,7 @@
           <el-col :span="24">
           <span  style="text-align: center">
 
-            <div style="text-align: center"  class="zid">亿富网络</div>
+            <div style="text-align: center"  class="zid">Alian支付</div>
           </span>
             <div >
             <el-menu  default-active="activeIndex" class="el-menu-vertical-demo" background-color="#545c64"
@@ -21,6 +21,10 @@
                 <i class="el-icon-menu"></i>
                <span slot="title" >结算信息</span>
               </el-menu-item>
+              <el-menu-item index="7">
+                <i class="el-icon-menu"></i>
+                <span slot="title" >钱包</span>
+              </el-menu-item>
               <el-submenu index="1">
                 <template slot="title">
                   <i class="el-icon-location"></i>
@@ -28,11 +32,11 @@
                 </template>
                 <el-menu-item-group>
                   <el-menu-item index="1-1">登录密码</el-menu-item>
-                  <el-menu-item index="1-2">交易密码</el-menu-item>
+                  <el-menu-item index="1-2" style="display: none">交易密码</el-menu-item>
                   <el-menu-item index="1-3">商户密钥</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
-              <el-submenu index="3">
+              <el-submenu index="3" style="display: none" >
                 <template slot="title">
                   <i class="el-icon-location"></i>
                   <span>代付</span>
@@ -43,7 +47,7 @@
                    <el-menu-item  index="2-3">账单</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
-              <el-menu-item index="4">
+              <el-menu-item index="4" style="display: none">
                 <i class="el-icon-setting"></i>
                 <span slot="title">导航四</span>
               </el-menu-item>
@@ -54,7 +58,7 @@
         </el-aside>
         <el-container>
           <el-header>
-            <div class="title" >亿富网络管理系统
+            <div class="title" >Ali支付
             <el-button type="primary" class="tui" @click="tui"> 退出</el-button>
             </div>
           </el-header>
@@ -87,6 +91,10 @@
               break;
             case '6':
               this.$router.push('/sett');
+              this.breadcrumbItems  = ['导航一']
+              break;
+            case '7':
+              this.$router.push('/money');
               this.breadcrumbItems  = ['导航一']
               break;
             case '1-1':
