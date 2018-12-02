@@ -3,25 +3,26 @@
       <span class="sp">密匙信息</span>
       <p>
         <span class="sck">商户密匙</span>
-        <el-input></el-input>
+        <el-input v-model="key"></el-input>
       </p>
-      <p >
+      <p  style="display: none">
         <span class="sck">支付密码</span>
         <el-input ></el-input>
       </p>
-      <el-button class="but">随机生成私钥</el-button>
-      <el-button  type="success"  @click="init">修改私钥</el-button>
+      <el-button class="but" @click="sui">随机生成私钥</el-button>
+      <el-button  type="success"  @click="xiu">修改私钥</el-button>
     </div>
 
 </template>
 
 <script>
-  import {keys} from  '../../api/api.js'
+  import {keys ,shopkeys, xukeys } from  '../../api/api.js'
     export default {
         name: "keys",
       data(){
           return{
             id:'',
+            key:''
           }
       },
       created(){
@@ -32,9 +33,29 @@
         init(){
           let id = this.id;
           keys({
+            params:{
+              user_id:id
+            }
+          }).then(res=>{
+            this.key = res.key
+          })
+        },
+        sui(){
+          let id = this.id;
+          shopkeys({
             user_id:id
           }).then(res=>{
-            console.log(res)
+            this.key = res.key
+          })
+        },
+        xiu(){
+          let id = this.id;
+          let key = this.key;
+          xukeys({
+            user_id:id,
+            secret_key:key,
+          }).then(res=>{
+            this.key = res.key
           })
         }
       }

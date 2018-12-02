@@ -77,7 +77,7 @@ export default {
               console.log(res.id)
               this.$message({	message : '登陆成功',	type : 'success'})
               window.sessionStorage.setItem('id',res.id);
-              this.$router.push({path:'/message'})
+              this.$router.push({path:'/pay'})
             }
 
           })

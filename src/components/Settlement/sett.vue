@@ -1,38 +1,38 @@
 <template>
     <div class="set">
      <span  class="sop" >商户结算信息详情</span>
-      <el-form  v-model="fromdata">
+      <el-form  v-model="format">
         <div class="shop">
 
           <table border="1" class="table">
             <tr>
               <th class="th"  style="background-color:#fff">姓名</th>
-              <td  class="td"  ><el-input v-model="fromdata.name"></el-input></td>
+              <td  class="td"><el-input v-model="name" ></el-input></td>
             </tr>
             <tr>
               <th class="th">身份证</th>
-              <td>  <el-input v-model="fromdata.identity_card" ></el-input></td>
+              <td>  <el-input v-model="identity_card" ></el-input></td>
             </tr>
             <tr>
               <th class="th">银行卡</th>
-              <td>  <el-input v-model="fromdata.bankcard_number" ></el-input></td>
+              <td>  <el-input v-model="bankcard_number" ></el-input></td>
             </tr>
 
             <tr>
               <th class="th"> <span>手机号</span>  </th>
-              <td>   <el-input v-model="fromdata.reserved_phone"></el-input></td>
+              <td>   <el-input v-model="reserved_phone"></el-input></td>
             </tr>
             <tr>
               <th class="th">   <span>银行卡类型</span> </th>
-              <td>   <el-input  v-model="fromdata.bank_type"></el-input></td>
+              <td>   <el-input  v-model="bank_type"></el-input></td>
             </tr>
             <tr>
               <th  class="th">  <span>开户行</span></th>
-              <td  >     <el-input v-model="fromdata.open_bank" ></el-input></td>
+              <td  >     <el-input v-model="open_bank" ></el-input></td>
             </tr>
             <tr>
               <th  class="th">  <span>开户支行</span></th>
-              <td  >     <el-input v-model="fromdata.sub_bank" ></el-input></td>
+              <td  >     <el-input v-model="sub_bank" ></el-input></td>
             </tr>
             <tr>
              <th  class="th">个人信息的修改</th>
@@ -40,11 +40,11 @@
             </tr>
             <tr>
               <th  class="th">    <span>提现类型</span> </th>
-              <td >   <el-input  :disabled="true" v-model="fromdata.charge_type"></el-input></td>
+              <td >   <el-input  :disabled="true" v-model="charge_type"></el-input></td>
             </tr>
             <tr>
               <th class="th" >    <span>提现费率</span> </th>
-              <td  >  <el-input   :disabled="true" v-model="fromdata.charge_rate"></el-input></td>
+              <td  >  <el-input   :disabled="true" v-model="charge_rate"></el-input></td>
             </tr>
           </table>
         </div>
@@ -61,7 +61,7 @@
       data(){
         return{
           id:'',
-          fromdata:{
+          format:[{
             user_id:'',
             name:'',//姓名
             identity_card:'',//身份证
@@ -72,7 +72,7 @@
             sub_bank:'',//开户支行
             charge_type:'',//: 提现类型：1-单次定额；2-单次百分比 ,
             charge_rate:'',//提现费率：charge_type = 1，单位为分；charge_type = 2；单位为 万分之n；
-          }
+          }]
         }
 
       },
@@ -91,23 +91,27 @@
             }
         ).then(res=>{
             console.log(res);
-            this.fromdata = res
+            this.format = res
           })
         },
-        cha(){
 
-        },
         modify(){
           let id = this.id;
-          let fromdata = this.fromdata;
+          let format = this.format;
+
           revise({
-            user_id:id,
-            name:fromdata.name,
-            identity_card:fromdata.identity_card,
-            bankcard_number:fromdata.bankcard_number,
-            reserved_phone:fromdata.reserved_phone,
-            open_bank:fromdata.open_bank,
-            sub_bank:fromdata.sub_bank,
+
+            format:{
+              user_id:id,
+              name:fname,
+              identity_card:format.identity_card,
+              bankcard_number:format.bankcard_number,
+              reserved_phone:format.reserved_phone,
+              open_bank:format.open_bank,
+              sub_bank:format.sub_bank,
+
+            }
+
           }).then(res=>{
             this.$message({	message : '修改成功！',	type : 'success'})
             console.log(res)
@@ -120,7 +124,11 @@
 </script>
 
 <style scoped>
-
+  body{
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  }
  .el-input{
   width: 100%;
 }

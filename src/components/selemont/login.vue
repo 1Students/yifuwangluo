@@ -62,7 +62,7 @@
 
   }
   .log{
-    height: 230px;
+    height: 700px;
     background-color: whitesmoke;
   }
   .lap{

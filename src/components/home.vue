@@ -2,32 +2,32 @@
     <div id="home">
 
       <el-container style="height: 100%"  >
-        <el-aside width="200px"style="background-color: #545c64;height: 700px"  >
+        <el-aside width="200px"style="background-color: #545c64;"  >
           <el-col :span="24">
           <span  style="text-align: center">
 
             <div style="text-align: center"  class="zid">Alian支付</div>
           </span>
             <div >
-            <el-menu  default-active="activeIndex" class="el-menu-vertical-demo" background-color="#545c64"
+            <el-menu  default-active="activeIndex"  class="el-menu-vertical-demo" background-color="#545c64"
               text-color="#fff"
               active-text-color="#ffd04b" @select="handleSelect"
             >
               <el-menu-item index="5">
-                <i class="el-icon-menu"></i>
+                <i ><img src="../assets/pay.png" alt="" class="img"></i>
                   <span slot="title">支付账单</span>
               </el-menu-item>
               <el-menu-item index="6">
-                <i class="el-icon-menu"></i>
+                <i > <img src="../assets/dan.png" alt="" class="img"> </i>
                <span slot="title" >结算信息</span>
               </el-menu-item>
               <el-menu-item index="7">
-                <i class="el-icon-menu"></i>
+                <i ><img src="../assets/bao.png" alt="" class="img"></i>
                 <span slot="title" >钱包</span>
               </el-menu-item>
               <el-submenu index="1">
                 <template slot="title">
-                  <i class="el-icon-location"></i>
+                  <i ><img src="../assets/key2.png" alt="" class="img"></i>
                   <span>密匙管理</span>
                 </template>
                 <el-menu-item-group>
@@ -62,7 +62,7 @@
             <el-button type="primary" class="tui" @click="tui"> 退出</el-button>
             </div>
           </el-header>
-          <el-main>
+          <el-main style="height: 700px">
           <div>
             <router-view></router-view>
           </div>
@@ -79,7 +79,7 @@
         name: "home",
       data(){
           return{
-            activeIndex: '1'
+            activeIndex: '1',
           }
       },
       methods:{
@@ -170,10 +170,12 @@
 
   }
   .img{
-    width: 35px;
-    height: 35px;
-    margin-left: 40%;
-    margin-top: 40px;
+    width: 25px;
+    height: 25px;
+
+  }
+  .el-menu-vertical-demo{
+    height: 100%;
   }
   .pho{
     height: 80px;
