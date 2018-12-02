@@ -24,6 +24,12 @@ axios.defaults.baseURL = 'http://47.99.180.135:8080';
         return res.data
       })
     };
+    //注册
+  export const  logos = params =>{
+  return axios.post('/login/phone',params).then(res=>{
+    return res.data
+  })
+};
     //结算信息
     export const  shops = params =>{
   return axios.get('/user/settlement',params).then(res=>{

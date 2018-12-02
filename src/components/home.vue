@@ -5,8 +5,8 @@
         <el-aside width="200px"style="background-color: #545c64;height: 700px"  >
           <el-col :span="24">
           <span  style="text-align: center">
-            <img src="../assets/logo.png" alt="" class="img">
-            <div style="text-align: center">控制台</div>
+
+            <div style="text-align: center"  class="zid">亿富网络</div>
           </span>
             <div >
             <el-menu  default-active="activeIndex" class="el-menu-vertical-demo" background-color="#545c64"
@@ -29,7 +29,7 @@
                 <el-menu-item-group>
                   <el-menu-item index="1-1">登录密码</el-menu-item>
                   <el-menu-item index="1-2">交易密码</el-menu-item>
-                  <el-menu-item index="1-3">私匙</el-menu-item>
+                  <el-menu-item index="1-3">商户密钥</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
               <el-submenu index="3">
@@ -172,6 +172,11 @@
     width: 250px;
     padding-top: 10px;
     padding-left: 10%;
+  }
+  .zid{
+    text-align: center;
+    margin-top: 20px;
+    color: white;
   }
   .zi{
     font-size: 40px;

@@ -14,6 +14,7 @@ export default new Router({
       name: 'HelloWorld',
       component: HelloWorld
     },
+
     {
       path:'/home',
       name:"home",
@@ -58,6 +59,7 @@ export default new Router({
 
       ]
     },
+
        {
         path:'/message',
         name:'message',

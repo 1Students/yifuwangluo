@@ -21,7 +21,8 @@
             </el-row>
             <el-row>
               <el-col :span="20" style="padding-left:15%;  padding-bottom:30px;">
-                <el-button id="login" v-on:click="check" style="width:100%" type="primary">登录</el-button>
+                <el-button id="login" v-on:click="check" @keydown.enter="check" style="width:100%" type="primary">登录</el-button>
+                <el-button  class="log"  v-on:click="check"  style="width:100%" type="primary">注册</el-button>
               </el-col>
           </el-row>
       </div>
@@ -103,28 +104,30 @@ export default {
     position: fixed;
     left: 0;
     top:0;
-
 }
 .er{
   position: fixed;
   left: 40%;
-  top:300px;
+  top:250px;
 }
 .logo{
   color: aliceblue;
   font-size: 40px;
     position: fixed;
     left: 45%;
-    top:300px;
+    top:250px;
 
 }
 .zhanghu{
    position: fixed;
   left: 40%;
-  top: 430px;
+  top: 380px;
   background-color: white;
   width: 366px;
-
+}
+.log{
+  margin-top: 20px;
+  margin-left:0 ;
 }
 .el-row {
     margin-bottom: 20px;

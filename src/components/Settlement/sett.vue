@@ -58,7 +58,8 @@
         init(){
           let id = this.id
           shops({
-            params: {user_id: id}
+           user_id: id
+
           }
         ).then(res=>{
             console.log(res)
