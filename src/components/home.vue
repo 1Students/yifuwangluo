@@ -6,7 +6,7 @@
           <el-col :span="24">
           <span  style="text-align: center">
 
-            <div style="text-align: center"  class="zid">Alian支付</div>
+            <div style="text-align: center"  class="zid">Alian Pay</div>
           </span>
             <div >
             <el-menu  default-active="activeIndex"  class="el-menu-vertical-demo" background-color="#545c64"
@@ -58,7 +58,7 @@
         </el-aside>
         <el-container>
           <el-header>
-            <div class="title" >Ali支付
+            <div class="title" >Alian Pay
             <el-button type="primary" class="tui" @click="tui"> 退出</el-button>
             </div>
           </el-header>

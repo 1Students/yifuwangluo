@@ -1,9 +1,8 @@
 <template>
     <div class="set">
      <span  class="sop" >商户结算信息详情</span>
-      <el-form  v-model="format">
+      <el-form  >
         <div class="shop">
-
           <table border="1" class="table">
             <tr>
               <th class="th"  style="background-color:#fff">姓名</th>
@@ -48,7 +47,7 @@
             </tr>
           </table>
         </div>
-      </el-form>
+      </el-form  >
 
     </div>
 </template>
@@ -60,8 +59,7 @@
         name: "sett",
       data(){
         return{
-          id:'',
-          format:[{
+            id:'',
             user_id:'',
             name:'',//姓名
             identity_card:'',//身份证
@@ -72,7 +70,7 @@
             sub_bank:'',//开户支行
             charge_type:'',//: 提现类型：1-单次定额；2-单次百分比 ,
             charge_rate:'',//提现费率：charge_type = 1，单位为分；charge_type = 2；单位为 万分之n；
-          }]
+
         }
 
       },
@@ -91,28 +89,34 @@
             }
         ).then(res=>{
             console.log(res);
-            this.format = res
+            this.name = res.name;
+            this.identity_card = res.identity_card;
+            this.bankcard_number = res.bankcard_number;
+            this.reserved_phone = res.reserved_phone;
+            this.open_bank = res.open_bank ;
+            this.sub_bank = res.sub_bank;
           })
         },
 
         modify(){
           let id = this.id;
-          let format = this.format;
-
+          let name = this.name;
+          let identity_card = this.identity_card;
+          let bankcard_number = this.bankcard_number;
+          let reserved_phone = this.reserved_phone;
+          let open_bank = this.open_bank ;
+          let  sub_bank = this.sub_bank;
           revise({
-
-            format:{
               user_id:id,
-              name:fname,
-              identity_card:format.identity_card,
-              bankcard_number:format.bankcard_number,
-              reserved_phone:format.reserved_phone,
-              open_bank:format.open_bank,
-              sub_bank:format.sub_bank,
-
-            }
+              name:name,
+              identity_card:identity_card,
+              bankcard_number:bankcard_number,
+              reserved_phone:reserved_phone,
+              open_bank:open_bank,
+              sub_bank:sub_bank,
 
           }).then(res=>{
+
             this.$message({	message : '修改成功！',	type : 'success'})
             console.log(res)
           })

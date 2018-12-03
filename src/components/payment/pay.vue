@@ -1,15 +1,18 @@
 <template>
     <div id="pay">
-    <span>
-      最新统计
-    </span>
-    <div>
-      <p>
-        今日成功成交额  <span style="color: red;font-size: 30px" >{{count}} </span> 元
-      </p>
-      <p>
-        今天成交笔数 <span style="color: green;font-size: 30px">{{total}}</span>   笔
-      </p>
+      <div class="sys ">
+        <p style="border: 1px solid white;padding-left: 10px;background-color: white;width: 300px;margin-left: 25px" >
+          最新统计
+        </p>
+        <div>
+          <p  class="cuy" >
+            今日成功成交额  <span style="color: red;font-size: 30px" >  <br> {{total}} </span> 元
+          </p>
+          <p class="cuys">
+            今天成交笔数 <span style="color: green;font-size: 30px;margin-left: 30px" > <br> {{count}}</span>   笔
+          </p>
+      </div>
+
 
       <el-table
         :data="days" border style="width: 100%">
@@ -26,6 +29,9 @@
         <el-table-column
           prop="money"
           label="金额">
+          <template slot-scope="scope">
+            <span>{{scope.row.money / 100 | rounding}}</span>
+          </template>
         </el-table-column>
         <el-table-column
           prop="pay_type"
@@ -37,10 +43,6 @@
           label="状态">
         </el-table-column>
         <el-table-column
-        prop="sys_order_id"
-        label="系统订单号">
-      </el-table-column>
-        <el-table-column
           prop="trade_time"
           label="交易时间">
         </el-table-column>
@@ -49,9 +51,7 @@
 
 
     </div>
-      <div id="saa" >
 
-      </div>
       <button @click="shy" style="display: none">实验</button>
     </div>
 </template>
@@ -84,6 +84,7 @@
         this.pad();
       },
       methods:{
+
         formatRole: function(row, column) {
           return row.pay_type == 'alipay' ? "支付宝" : row.authority == 'wx ' ? "微信 " : "";
         },
@@ -96,7 +97,7 @@
           }).then(res=>{
             console.log(res);
             this.count = res.count;
-            this.total = res.total
+            this.total = res.total;
           })
         },
         pad(){
@@ -132,5 +133,33 @@
 </script>
 
 <style scoped>
+    #pay{
+      background-color: whitesmoke;
+      padding-bottom: 45px;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 15px;
+      height: 100%;
+    }
+  .sys{
+    border: 1px solid whitesmoke;
 
+  }
+  .cuy{
+    border: 1px solid white;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 300px;
+    margin-left: 25px;
+
+    background-color: white;
+  }
+  .cuys{
+    border: 1px solid white;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 300px;
+    margin-left: 25px;
+    background-color: white;
+  }
 </style>
